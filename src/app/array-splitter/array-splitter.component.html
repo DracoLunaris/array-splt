@@ -1,0 +1,44 @@
+<h1>Array Split new</h1>
+
+<label><b>Array</b></label>
+<div>
+    <input type="text" [(ngModel)]="this.stringArray">
+</div>
+<div *ngIf='this.errors.indexOf("notArray") !== -1'>
+    Your array is invalidly formatted. Please ensure you enter a comma separated list
+</div>
+<br>
+<label><b>Split into N sub arrays</b></label>
+<div>
+    <input type="number" min="0" step="1" [(ngModel)]="this.splitInt">
+</div>
+<div *ngIf='this.errors.indexOf("badInt") !== -1'>
+    Please use an int > 0
+</div>
+<div *ngIf='this.errors.indexOf("toBigInt") !== -1'>
+    Please use an int smaller than the number of values in the array
+</div>
+<br>
+
+<div>
+    <button (click)='this.splitStringArray(this.splitInt,this.stringArray)'>
+        <h2>Split</h2>
+    </button>
+
+</div>
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of this.display;">
+            [<td *ngFor="let data of row">
+                {{data}},
+            </td>]
+        </tr>
+    </tbody>
+</table>

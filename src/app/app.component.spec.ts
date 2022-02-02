@@ -1,6 +1,10 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+let component: AppComponent;
+let fixture: ComponentFixture<AppComponent>;
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,22 +18,8 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'array-splt'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('array-splt');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('array-splt app is running!');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;
   });
 });
